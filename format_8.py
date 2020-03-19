@@ -51,3 +51,15 @@ def scramble_bin(binary):
             n += 1
 
     return scrambled
+
+
+def bin_to_dec(binary):
+    """Converts an array of 4 binary numbers into a single decimal number
+
+    Args:
+        binary: A list containing 4 binary numbers
+
+    Returns:
+        decimal: An int representation of the 4 binary numbers
+    """
+    return binary
