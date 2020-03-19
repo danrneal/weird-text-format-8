@@ -91,42 +91,85 @@ class EncodeTestCase(unittest.TestCase):
     def test_foo(self):
         """End to end test for the string 'foo'"""
         encoded = encode('foo')
-        self.assertEqual(encoded, 124807030)
+        self.assertEqual(encoded, [124807030])
 
     def test_spacefoo(self):
         """End to end test for the string ' foo'"""
         encoded = encode(' foo')
-        self.assertEqual(encoded, 250662636)
+        self.assertEqual(encoded, [250662636])
 
     def test_foot(self):
         """End to end test for the string 'foot'"""
         encoded = encode('foot')
-        self.assertEqual(encoded, 267939702)
+        self.assertEqual(encoded, [267939702])
 
     def test_allcapsbird(self):
         """End to end test for the string 'BIRD'"""
         encoded = encode('BIRD')
-        self.assertEqual(encoded, 251930706)
+        self.assertEqual(encoded, [251930706])
 
     def test_dotdotdotdot(self):
         """End to end test for the string '....'"""
         encoded = encode('....')
-        self.assertEqual(encoded, 15794160)
+        self.assertEqual(encoded, [15794160])
 
     def test_carrotcarrotcarrotcarrot(self):
         """End to end test for the string '^^^^'"""
         encoded = encode('^^^^')
-        self.assertEqual(encoded, 252706800)
+        self.assertEqual(encoded, [252706800])
 
     def test_capwoot(self):
         """End to end test for the string 'Woot'"""
         encoded = encode('Woot')
-        self.assertEqual(encoded, 266956663)
+        self.assertEqual(encoded, [266956663])
 
     def test_no(self):
         """End to end test for the string 'no'"""
         encoded = encode('no')
-        self.assertEqual(encoded, 53490482)
+        self.assertEqual(encoded, [53490482])
+
+    def test_tacocat(self):
+        """End to end test for the string 'tacocat'"""
+        encoded = encode('tacocat')
+        self.assertEqual(encoded, [267487694, 125043731])
+
+    def test_never_odd_or_even(self):
+        """End to end test for the string 'never odd or even'"""
+        encoded = encode('never odd or even')
+        self.assertEqual(
+            encoded,
+            [267657050, 233917524, 234374596, 250875466, 17830160]
+        )
+
+    def test_lagercomma_sircomma_is_regal(self):
+        """End to end test for the string 'lager, sir, is regal'"""
+        encoded = encode('lager, sir, is regal')
+        self.assertEqual(
+            encoded,
+            [267394382, 167322264, 66212897, 200937635, 267422503]
+        )
+
+    def test_go_hang_a_salamicomma_capiapostrophem_a_lasagna_hog(self):
+        """End to end test for the str 'go hang a salami, I'm a lasagna hog'"""
+        encoded = encode("go hang a salami, I'm a lasagna hog")
+        self.assertEqual(
+            encoded,
+            [
+                200319795, 133178981, 234094669, 267441422, 78666124, 99619077,
+                267653454, 133178165, 124794470
+            ]
+        )
+
+    def test_egadcomma_a_base_tone_denotes_a_bad_age(self):
+        """End to end test for the str 'egad, a base tone denotes a bad age'"""
+        encoded = encode('egad, a base tone denotes a bad age')
+        self.assertEqual(
+            encoded,
+            [
+                267389735, 82841860, 267651166, 250793668, 233835785,
+                267665210, 99680277, 133170194, 124782119
+            ]
+        )
 
 
 if __name__ == "__main__":
