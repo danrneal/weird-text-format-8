@@ -1,0 +1,6 @@
+.history
+.vscode
+env
+venv
+__pycache__
+*.txt
