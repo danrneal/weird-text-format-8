@@ -62,4 +62,6 @@ def bin_to_dec(binary):
     Returns:
         decimal: An int representation of the 4 binary numbers
     """
-    return binary
+    decimal = int(''.join(binary), 2)
+
+    return decimal
