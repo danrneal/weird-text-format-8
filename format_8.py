@@ -35,7 +35,19 @@ def scramble_bin(binary):
             of characters
 
     Returns:
-        scrambles: A list containing 4 elements which are the result of
+        scrambled: A list containing 4 elements which are the result of
             scrambling the input
     """
-    return binary
+
+    scrambled = ['', '', '', '']
+
+    n = 0
+    for i in range(len(scrambled)):
+        while len(scrambled[i]) < len(binary[i]):
+
+            for char in binary:
+                scrambled[i] += char[n]
+
+            n += 1
+
+    return scrambled
