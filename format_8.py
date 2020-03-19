@@ -14,4 +14,14 @@ def str_to_bin(string):
         binary: A list of 4 elements representing each character in binary
             format
     """
-    return string
+
+    binary = ['00000000', '00000000', '00000000', '00000000']
+
+    n = -1
+    for char in string:
+        bits = bin(ord(char))[2:]
+        bits = '00000000'[:8-len(bits)] + bits
+        binary[n] = bits
+        n -= 1
+
+    return binary
