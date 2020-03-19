@@ -1,7 +1,7 @@
 """Test objects used to test the behavior in part1 of the alpc"""
 
 import unittest
-from format_8 import str_to_bin, scramble_bin, bin_to_dec
+from format_8 import str_to_bin, scramble_bin, bin_to_dec, encode
 
 
 class StrToBinTestCase(unittest.TestCase):
@@ -83,6 +83,50 @@ class BinToDecTestCase(unittest.TestCase):
         """Test conversion from to decimal for non-alphanumeric characters"""
         decimal = bin_to_dec(['00000100', '10110110', '11100100', '01101000'])
         self.assertEqual(decimal, 79094888)
+
+
+class EncodeTestCase(unittest.TestCase):
+    """End to end tests for the encode function"""
+
+    def test_foo(self):
+        """End to end test for the string 'foo'"""
+        encoded = encode('foo')
+        self.assertEqual(encoded, 124807030)
+
+    def test_spacefoo(self):
+        """End to end test for the string ' foo'"""
+        encoded = encode(' foo')
+        self.assertEqual(encoded, 250662636)
+
+    def test_foot(self):
+        """End to end test for the string 'foot'"""
+        encoded = encode('foot')
+        self.assertEqual(encoded, 267939702)
+
+    def test_allcapsbird(self):
+        """End to end test for the string 'BIRD'"""
+        encoded = encode('BIRD')
+        self.assertEqual(encoded, 251930706)
+
+    def test_dotdotdotdot(self):
+        """End to end test for the string '....'"""
+        encoded = encode('....')
+        self.assertEqual(encoded, 15794160)
+
+    def test_carrotcarrotcarrotcarrot(self):
+        """End to end test for the string '^^^^'"""
+        encoded = encode('^^^^')
+        self.assertEqual(encoded, 252706800)
+
+    def test_capwoot(self):
+        """End to end test for the string 'Woot'"""
+        encoded = encode('Woot')
+        self.assertEqual(encoded, 266956663)
+
+    def test_no(self):
+        """End to end test for the string 'no'"""
+        encoded = encode('no')
+        self.assertEqual(encoded, 53490482)
 
 
 if __name__ == "__main__":

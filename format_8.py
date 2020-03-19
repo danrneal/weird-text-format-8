@@ -65,3 +65,15 @@ def bin_to_dec(binary):
     decimal = int(''.join(binary), 2)
 
     return decimal
+
+
+def encode(string):
+    """Encodes bundles of 4 characters using a weird text format
+
+    Args:
+        string: The string to be encoded, must be 4 or less characters
+
+    Returns:
+        encoded: An int representing the encoded string
+    """
+    return string
