@@ -4,6 +4,17 @@ Takes a 4 character block of text and encodes it using a weird text format
 """
 
 
+def main():
+    """Main function call, runs encode script"""
+    string = input("String to process: ")
+    while len(string) > 4:
+        print("String must be 4 characters or less")
+        string = input("String to process: ")
+
+    encoded = encode(string)
+    print(encoded)
+
+
 def str_to_bin(string):
     """Converts a 4 character string to binary
 
@@ -81,3 +92,7 @@ def encode(string):
     encoded = bin_to_dec(scrambled)
 
     return encoded
+
+
+if __name__ == "__main__":
+    main()
