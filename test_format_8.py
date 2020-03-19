@@ -1,7 +1,7 @@
 """Test objects used to test the behavior in part1 of the alpc"""
 
 import unittest
-from format_8 import str_to_bin
+from format_8 import str_to_bin, scramble_bin
 
 
 class StrToBinTestCase(unittest.TestCase):
@@ -29,6 +29,40 @@ class StrToBinTestCase(unittest.TestCase):
         self.assertEqual(
             binary,
             ['00101001', '01011110', '00111010', '00100000']
+        )
+
+
+class ScrambleBinTestCase(unittest.TestCase):
+    """This class represents the test cases for the scramble_bin function"""
+
+    def test_single_character(self):
+        """Test scrambling binary for a single character"""
+        scrambled_binary = scramble_bin(
+            ['00000000', '00000000', '00000000', '01000001']
+        )
+        self.assertEqual(
+            scrambled_binary,
+            ['00000001', '00000000', '00000000', '00000001']
+        )
+
+    def test_full_bundle(self):
+        """Test scrambling binary for a full 4 characters"""
+        scrambled_binary = scramble_bin(
+            ['01000100', '01000101', '01010010', '01000110']
+        )
+        self.assertEqual(
+            scrambled_binary,
+            ['00001111', '00000010', '00001101', '00110100']
+        )
+
+    def test_non_alphanumerics(self):
+        """Test scrambling binary for non-alphanumeric characters"""
+        scrambled_binary = scramble_bin(
+            ['00101001', '01011110', '00111010', '00100000']
+        )
+        self.assertEqual(
+            scrambled_binary,
+            ['00000100', '10110110', '11100100', '01101000']
         )
 
 

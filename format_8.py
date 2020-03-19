@@ -25,3 +25,17 @@ def str_to_bin(string):
         n -= 1
 
     return binary
+
+
+def scramble_bin(binary):
+    """Scrambles a 4 element list representing the binary of 4 character
+
+    Args:
+        binary: A list containing 4 elements that are the binary representation
+            of characters
+
+    Returns:
+        scrambles: A list containing 4 elements which are the result of
+            scrambling the input
+    """
+    return binary
