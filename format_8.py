@@ -76,4 +76,8 @@ def encode(string):
     Returns:
         encoded: An int representing the encoded string
     """
-    return string
+    binary = str_to_bin(string)
+    scrambled = scramble_bin(binary)
+    encoded = bin_to_dec(scrambled)
+
+    return encoded
