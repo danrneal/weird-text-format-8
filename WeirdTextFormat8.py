@@ -80,7 +80,7 @@ def main():
         print('\nDone!')
 
 
-def str_to_bin(string):
+def strToBin(string):
     """Converts a 4 character string to binary
 
     Args:
@@ -103,7 +103,7 @@ def str_to_bin(string):
     return binary
 
 
-def bin_to_str(binary):
+def binToStr(binary):
     """Converts a 4 element list of binary to a 4 character string
 
     Args:
@@ -124,7 +124,7 @@ def bin_to_str(binary):
     return string
 
 
-def scramble_bin(binary):
+def scrambleBin(binary):
     """Scrambles a 4 element list representing the binary of 4 character
 
     Args:
@@ -150,7 +150,7 @@ def scramble_bin(binary):
     return scrambled
 
 
-def unscramble_bin(binary):
+def unscrambleBin(binary):
     """Unscrambles a 4 element list representing the binary of 4 characters
 
     Args:
@@ -173,7 +173,7 @@ def unscramble_bin(binary):
     return unscrambled
 
 
-def bin_to_dec(binary):
+def binToDec(binary):
     """Converts an array of 4 binary numbers into a single decimal number
 
     Args:
@@ -187,7 +187,7 @@ def bin_to_dec(binary):
     return decimal
 
 
-def dec_to_bin(decimal):
+def decToBin(decimal):
     """Converts a single decimal number into an array of 4 binary numbers
 
     Args:
@@ -225,9 +225,9 @@ def encode(string):
     encoded = []
 
     for i in range(0, len(string), 4):
-        binary = str_to_bin(string[i:i+4])
-        scrambled = scramble_bin(binary)
-        decimal = bin_to_dec(scrambled)
+        binary = strToBin(string[i:i+4])
+        scrambled = scrambleBin(binary)
+        decimal = binToDec(scrambled)
         encoded.append(decimal)
 
     return encoded
@@ -246,9 +246,9 @@ def decode(decimals):
     decoded = ''
 
     for decimal in decimals:
-        binary = dec_to_bin(decimal)
-        unscrambled = unscramble_bin(binary)
-        string = bin_to_str(unscrambled)
+        binary = decToBin(decimal)
+        unscrambled = unscrambleBin(binary)
+        string = binToStr(unscrambled)
         decoded += string
 
     return decoded
