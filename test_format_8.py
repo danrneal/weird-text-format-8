@@ -1,7 +1,7 @@
 """Test objects used to test the behavior in part1 of the alpc"""
 
 import unittest
-from format_8 import str_to_bin, scramble_bin, bin_to_dec, encode
+from format_8 import str_to_bin, scramble_bin, bin_to_dec, encode, dec_to_bin
 
 
 class StrToBinTestCase(unittest.TestCase):
@@ -83,6 +83,34 @@ class BinToDecTestCase(unittest.TestCase):
         """Test conversion from to decimal for non-alphanumeric characters"""
         decimal = bin_to_dec(['00000100', '10110110', '11100100', '01101000'])
         self.assertEqual(decimal, 79094888)
+
+
+class DecToBinTestCase(unittest.TestCase):
+    """This class represents the test cases for the dec_to_bin function"""
+
+    def test_single_character(self):
+        """Test conversion from decimal for a single character"""
+        binary = dec_to_bin(16777217)
+        self.assertEqual(
+            binary,
+            ['00000001', '00000000', '00000000', '00000001']
+        )
+
+    def test_full_bundle(self):
+        """Test conversion to decimal for a full 4 characters"""
+        binary = dec_to_bin(251792692)
+        self.assertEqual(
+            binary,
+            ['00001111', '00000010', '00001101', '00110100']
+        )
+
+    def test_non_alphanumerics(self):
+        """Test conversion from to decimal for non-alphanumeric characters"""
+        binary = dec_to_bin(79094888)
+        self.assertEqual(
+            binary,
+            ['00000100', '10110110', '11100100', '01101000']
+        )
 
 
 class EncodeTestCase(unittest.TestCase):

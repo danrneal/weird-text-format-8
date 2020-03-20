@@ -78,6 +78,18 @@ def bin_to_dec(binary):
     return decimal
 
 
+def dec_to_bin(decimal):
+    """Converts a single decimal number into an array of 4 binary numbers
+
+    Args:
+        decimal: An int representation of 4 binary numbers
+
+    Returns:
+        binary: A list containing the 4 binary numbers
+    """
+    return decimal
+
+
 def encode(string):
     """Encodes bundles of 4 characters using a weird text format
 
