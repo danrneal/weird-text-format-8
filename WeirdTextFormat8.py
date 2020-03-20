@@ -52,13 +52,13 @@ def main():
       elif encodeOrDecode.lower() in ('d', 'decode'):
          args.decode = True
 
-   if args.infile == sys.stdin:
+   if sys.stdin == args.infile:
       string = input("String to process: ")
    else:
       with args.infile as infile:
          string = infile.read()
 
-   if args.encode is not None:
+   if args.encode:
 
       encoded = encode(string)
       output = json.dumps(encoded)
@@ -67,12 +67,11 @@ def main():
 
       try:
          decimals = json.loads(string)
-      except json.decoder.JSONDecodeError:
+         output = decode(decimals)
+      except (json.decoder.JSONDecodeError, TypeError):
          print('String to decode was not properly formatted')
          print('e.g. [266395138, 158874521, 267541809, 1048577]')
          sys.exit(1)
-
-      output = decode(decimals)
 
    with args.outfile as outfile:
       print(f'Writing output to {outfile.name}')
@@ -114,7 +113,7 @@ def binToStr(binary):
 
    string = ''
 
-   while len(binary) > 0:
+   while 0 < len(binary):
       string += chr(int(binary.pop(), 2))
 
    string = string.strip('\x00')
@@ -138,7 +137,7 @@ def scrambleBin(binary):
 
    n = 0
    for i in range(len(scrambled)):
-      while len(scrambled[i]) < 8:
+      while 8 > len(scrambled[i]):
 
          for char in binary:
             scrambled[i] += char[n]
@@ -200,7 +199,7 @@ def decToBin(decimal):
 
    for i in range(len(binary), 0, -1):
 
-      if len(allBits) > 8:
+      if 8 < len(allBits):
          binary[i-1] = allBits[len(allBits) - 8:]
       else:
          binary[i-1] = '00000000'[:8-len(allBits)] + allBits
