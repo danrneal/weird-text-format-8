@@ -38,6 +38,19 @@ def str_to_bin(string):
     return binary
 
 
+def bin_to_str(binary):
+    """Converts a 4 element list of binary to a 4 character string
+
+    Args:
+        binary: A list of 4 elements representing each character in binary
+            format
+
+    Returns:
+        string: A str consisting of 4 characters or less
+    """
+    return binary
+
+
 def scramble_bin(binary):
     """Scrambles a 4 element list representing the binary of 4 character
 

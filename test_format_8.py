@@ -2,7 +2,8 @@
 
 import unittest
 from format_8 import (
-    str_to_bin, scramble_bin, unscramble_bin, bin_to_dec, dec_to_bin, encode
+    str_to_bin, bin_to_str, scramble_bin, unscramble_bin, bin_to_dec,
+    dec_to_bin, encode
 )
 
 
@@ -32,6 +33,25 @@ class StrToBinTestCase(unittest.TestCase):
             binary,
             ['00101001', '01011110', '00111010', '00100000']
         )
+
+
+class BinToStrTestCase(unittest.TestCase):
+    """This class represents the test cases for the bin_to_str function"""
+
+    def test_single_character(self):
+        """Test conversion from binary for a single character"""
+        string = bin_to_str(['00000000', '00000000', '00000000', '01000001'])
+        self.assertEqual(string, 'A')
+
+    def test_full_bundle(self):
+        """Test conversion from binary for a full 4 characters"""
+        string = bin_to_str(['01000100', '01000101', '01010010', '01000110'])
+        self.assertEqual(string, 'FRED')
+
+    def test_non_alphanumerics(self):
+        """Test conversion from binary for non-alphanumeric characters"""
+        string = bin_to_str(['00101001', '01011110', '00111010', '00100000'])
+        self.assertEqual(string, ' :^)')
 
 
 class ScrambleBinTestCase(unittest.TestCase):
