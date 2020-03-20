@@ -250,8 +250,8 @@ class AEncodeTestCase(unittest.TestCase):
       self.assertEqual(
          encoded,
          [
-            267389735, 82841860, 267651166, 250793668, 233835785,
-            267665210, 99680277, 133170194, 124782119
+            267389735, 82841860, 267651166, 250793668, 233835785, 267665210,
+            99680277, 133170194, 124782119
          ]
       )
 
@@ -306,16 +306,12 @@ class ADecodeTestCase(unittest.TestCase):
 
    def testNeverOddOrEven(self):
       """End to end test for the string 'never odd or even'"""
-      decoded = decode(
-         [267657050, 233917524, 234374596, 250875466, 17830160]
-      )
+      decoded = decode([267657050, 233917524, 234374596, 250875466, 17830160])
       self.assertEqual(decoded, 'never odd or even')
 
    def testLagerCommaSitCommaIsRegal(self):
       """End to end test for the string 'lager, sir, is regal'"""
-      decoded = decode(
-         [267394382, 167322264, 66212897, 200937635, 267422503]
-      )
+      decoded = decode([267394382, 167322264, 66212897, 200937635, 267422503])
       self.assertEqual(decoded, 'lager, sir, is regal')
 
    def testGoHangASalamiCommaImALasagnaHog(self):

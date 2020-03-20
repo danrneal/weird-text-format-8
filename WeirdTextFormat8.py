@@ -17,8 +17,8 @@ def main():
       '-e', '--encode',
       action='store_true',
       help=(
-         'Encode a string into the corresponding list of integer values'
-         'using Weird Text Format-8'
+         'Encode a string into the corresponding list of integer values using'
+         'Weird Text Format-8'
       )
    )
    group.add_argument(
@@ -58,7 +58,7 @@ def main():
       with args.infile as infile:
          string = infile.read()
 
-   if args.encode:
+   if args.encode is not None:
 
       encoded = encode(string)
       output = json.dumps(encoded)
@@ -87,8 +87,7 @@ def strToBin(string):
       string: A str consisting of 4 characters or less
 
    Returns:
-      binary: A list of 4 elements representing each character in binary
-         format
+      binary: A list of 4 elements representing each character in binary format
    """
 
    binary = ['00000000', '00000000', '00000000', '00000000']
@@ -107,8 +106,7 @@ def binToStr(binary):
    """Converts a 4 element list of binary to a 4 character string
 
    Args:
-      binary: A list of 4 elements representing each character in binary
-         format
+      binary: A list of 4 elements representing each character in binary format
 
    Returns:
       string: A str consisting of 4 characters or less
@@ -140,7 +138,7 @@ def scrambleBin(binary):
 
    n = 0
    for i in range(len(scrambled)):
-      while len(scrambled[i]) < len(binary[i]):
+      while len(scrambled[i]) < 8:
 
          for char in binary:
             scrambled[i] += char[n]
