@@ -4,17 +4,80 @@ Part of the Art+Logic Programming Challenge
 
     usage: format_8.py [-h] [-e | -d] [-i [INFILE]] [-o [OUTFILE]]
 """
+import argparse
+import json
+import sys
 
 
 def main():
     """Main function call, runs encode script"""
-    string = input("String to process: ")
-    while len(string) > 4:
-        print("String must be 4 characters or less")
-        string = input("String to process: ")
+    parser = argparse.ArgumentParser()
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        '-e', '--encode',
+        action='store_true',
+        help=(
+            'Encode a string into the corresponding list of integer values'
+            'using Weird Text Format-8'
+        )
+    )
+    group.add_argument(
+        '-d', '--decode',
+        action='store_true',
+        help=(
+            'Decode a list of integer values encoded with Weird Text Format-8'
+            'back into its original string'
+        )
+    )
+    parser.add_argument(
+        '-i', '--infile',
+        nargs='?',
+        type=argparse.FileType('r'),
+        default=sys.stdin,
+        help='Specify a file to read input from (default: stdin)'
+    )
+    parser.add_argument(
+        '-o', '--outfile',
+        nargs='?',
+        type=argparse.FileType('w'),
+        default=sys.stdout,
+        help='Specity a file to write output to (default: stdout)'
+    )
+    args = parser.parse_args()
 
-    encoded = encode(string)
-    print(encoded)
+    while not args.encode and not args.decode:
+        encode_or_decode = input('(E)ncode or (D)ecode? ')
+        if encode_or_decode.lower() in ('e', 'encode'):
+            args.encode = True
+        elif encode_or_decode.lower() in ('d', 'decode'):
+            args.decode = True
+
+    if args.infile == sys.stdin:
+        string = input("String to process: ")
+    else:
+        with args.infile as infile:
+            string = infile.read()
+
+    if args.encode:
+
+        encoded = encode(string)
+        output = json.dumps(encoded)
+
+    else:
+
+        try:
+            decimals = json.loads(string)
+        except json.decoder.JSONDecodeError:
+            print('String to decode was not properly formatted')
+            print('e.g. [266395138, 158874521, 267541809, 1048577]')
+            sys.exit(1)
+
+        output = decode(decimals)
+
+    with args.outfile as outfile:
+        print(f'Writing output to {outfile.name}')
+        outfile.write(output)
+        print('\nDone!')
 
 
 def str_to_bin(string):
