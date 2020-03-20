@@ -1,7 +1,7 @@
 """Test objects used to test the behavior in part1 of the alpc"""
 
 import unittest
-from format_8 import (
+from WeirdTextFormat8 import (
     str_to_bin, bin_to_str, scramble_bin, unscramble_bin, bin_to_dec,
     dec_to_bin, encode, decode
 )
