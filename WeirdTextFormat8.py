@@ -2,7 +2,7 @@
 
 Part of the Art+Logic Programming Challenge
 
-    usage: format_8.py [-h] [-e | -d] [-i [INFILE]] [-o [OUTFILE]]
+    usage: WeirdTextFormat8.py [-h] [-e | -d] [-i [INFILE]] [-o [OUTFILE]]
 """
 import argparse
 import json
@@ -46,10 +46,10 @@ def main():
     args = parser.parse_args()
 
     while not args.encode and not args.decode:
-        encode_or_decode = input('(E)ncode or (D)ecode? ')
-        if encode_or_decode.lower() in ('e', 'encode'):
+        encodeOrDecode = input('(E)ncode or (D)ecode? ')
+        if encodeOrDecode.lower() in ('e', 'encode'):
             args.encode = True
-        elif encode_or_decode.lower() in ('d', 'decode'):
+        elif encodeOrDecode.lower() in ('d', 'decode'):
             args.decode = True
 
     if args.infile == sys.stdin:
@@ -165,8 +165,8 @@ def unscrambleBin(binary):
     unscrambled = ['', '', '', '']
 
     n = 0
-    for scrambled_binary in binary:
-        for char in scrambled_binary:
+    for scrambledBinary in binary:
+        for char in scrambledBinary:
             unscrambled[n % 4] += char
             n += 1
 
@@ -198,16 +198,16 @@ def decToBin(decimal):
     """
 
     binary = ['00000000', '00000000', '00000000', '00000000']
-    all_bits = bin(decimal)[2:]
+    allBits = bin(decimal)[2:]
 
     for i in range(len(binary), 0, -1):
 
-        if len(all_bits) > 8:
-            binary[i-1] = all_bits[len(all_bits) - 8:]
+        if len(allBits) > 8:
+            binary[i-1] = allBits[len(allBits) - 8:]
         else:
-            binary[i-1] = '00000000'[:8-len(all_bits)] + all_bits
+            binary[i-1] = '00000000'[:8-len(allBits)] + allBits
 
-        all_bits = all_bits[:len(all_bits) - 8]
+        allBits = allBits[:len(allBits) - 8]
 
     return binary
 

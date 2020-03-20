@@ -59,31 +59,31 @@ class AScrambleBinTestCase(unittest.TestCase):
 
     def testSingleCharacter(self):
         """Test scrambling binary for a single character"""
-        scrambled_binary = scrambleBin(
+        scrambledBinary = scrambleBin(
             ['00000000', '00000000', '00000000', '01000001']
         )
         self.assertEqual(
-            scrambled_binary,
+            scrambledBinary,
             ['00000001', '00000000', '00000000', '00000001']
         )
 
     def testFullBundle(self):
         """Test scrambling binary for a full 4 characters"""
-        scrambled_binary = scrambleBin(
+        scrambledBinary = scrambleBin(
             ['01000100', '01000101', '01010010', '01000110']
         )
         self.assertEqual(
-            scrambled_binary,
+            scrambledBinary,
             ['00001111', '00000010', '00001101', '00110100']
         )
 
     def testNonAlphanumerics(self):
         """Test scrambling binary for non-alphanumeric characters"""
-        scrambled_binary = scrambleBin(
+        scrambledBinary = scrambleBin(
             ['00101001', '01011110', '00111010', '00100000']
         )
         self.assertEqual(
-            scrambled_binary,
+            scrambledBinary,
             ['00000100', '10110110', '11100100', '01101000']
         )
 
@@ -93,31 +93,31 @@ class AUncrambleBinTestCase(unittest.TestCase):
 
     def testSingleCharacter(self):
         """Test unscrambling binary for a single character"""
-        unscrambled_binary = unscrambleBin(
+        unscrambledBinary = unscrambleBin(
             ['00000001', '00000000', '00000000', '00000001']
         )
         self.assertEqual(
-            unscrambled_binary,
+            unscrambledBinary,
             ['00000000', '00000000', '00000000', '01000001']
         )
 
     def testFullBundle(self):
         """Test unscrambling binary for a full 4 characters"""
-        unscrambled_binary = unscrambleBin(
+        unscrambledBinary = unscrambleBin(
             ['00001111', '00000010', '00001101', '00110100']
         )
         self.assertEqual(
-            unscrambled_binary,
+            unscrambledBinary,
             ['01000100', '01000101', '01010010', '01000110']
         )
 
     def testNonAlphanumerics(self):
         """Test unscrambling binary for non-alphanumeric characters"""
-        unscrambled_binary = unscrambleBin(
+        unscrambledBinary = unscrambleBin(
             ['00000100', '10110110', '11100100', '01101000']
         )
         self.assertEqual(
-            unscrambled_binary,
+            unscrambledBinary,
             ['00101001', '01011110', '00111010', '00100000']
         )
 
