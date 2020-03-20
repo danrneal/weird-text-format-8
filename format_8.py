@@ -76,7 +76,15 @@ def unscramble_bin(binary):
             representation of characters
     """
 
-    return binary
+    unscrambled = ['', '', '', '']
+
+    n = 0
+    for scrambled_binary in binary:
+        for char in scrambled_binary:
+            unscrambled[n % 4] += char
+            n += 1
+
+    return unscrambled
 
 
 def bin_to_dec(binary):
