@@ -87,7 +87,18 @@ def dec_to_bin(decimal):
     Returns:
         binary: A list containing the 4 binary numbers
     """
-    return decimal
+
+    binary = ['00000000', '00000000', '00000000', '00000000']
+    all_bits = bin(decimal)[2:]
+
+    for i in range(len(binary), 0, -1):
+        if len(all_bits) > 8:
+            binary[i-1] = all_bits[len(all_bits) - 8:]
+            all_bits = all_bits[:len(all_bits) - 8]
+        else:
+            binary[i-1] = '00000000'[:8-len(all_bits)] + all_bits
+
+    return binary
 
 
 def encode(string):
