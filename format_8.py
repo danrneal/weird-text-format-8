@@ -177,7 +177,16 @@ def decode(decimals):
     Returns:
         decoded: A str represending the decoded string
     """
-    return decimals
+
+    decoded = ''
+
+    for decimal in decimals:
+        binary = dec_to_bin(decimal)
+        unscrambled = unscramble_bin(binary)
+        string = bin_to_str(unscrambled)
+        decoded += string
+
+    return decoded
 
 
 if __name__ == "__main__":
