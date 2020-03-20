@@ -166,5 +166,17 @@ def encode(string):
     return encoded
 
 
+def decode(decimals):
+    """Decodes decimals representing bundles of 4 chars in a weird text format
+
+    Args:
+        decimals: A list of decimals representing bundles of 4 characters
+
+    Returns:
+        decoded: A str represending the decoded string
+    """
+    return decimals
+
+
 if __name__ == "__main__":
     main()
