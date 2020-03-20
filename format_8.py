@@ -82,14 +82,19 @@ def encode(string):
     """Encodes bundles of 4 characters using a weird text format
 
     Args:
-        string: The string to be encoded, must be 4 or less characters
+        string: The string to be encoded
 
     Returns:
-        encoded: An int representing the encoded string
+        encoded: An list of ints representing the encoded string
     """
-    binary = str_to_bin(string)
-    scrambled = scramble_bin(binary)
-    encoded = bin_to_dec(scrambled)
+
+    encoded = []
+
+    for i in range(0, len(string), 4):
+        binary = str_to_bin(string[i:i+4])
+        scrambled = scramble_bin(binary)
+        decimal = bin_to_dec(scrambled)
+        encoded.append(decimal)
 
     return encoded
 
