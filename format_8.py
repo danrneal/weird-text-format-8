@@ -64,6 +64,21 @@ def scramble_bin(binary):
     return scrambled
 
 
+def unscramble_bin(binary):
+    """Unscrambles a 4 element list representing the binary of 4 characters
+
+    Args:
+        binary: A list containing 4 elements which are the scrambled
+            representation of 4 characters
+
+    Returns:
+        unscrambled: A list containing 4 elements that are the binary
+            representation of characters
+    """
+
+    return binary
+
+
 def bin_to_dec(binary):
     """Converts an array of 4 binary numbers into a single decimal number
 
