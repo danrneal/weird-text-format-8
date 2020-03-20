@@ -1,6 +1,8 @@
-"""Part 1 of the Art+Logic Programming Challenge
+"""Encode and decode strings in Weird Text Format-8
 
-Takes a 4 character block of text and encodes it using a weird text format
+Part of the Art+Logic Programming Challenge
+
+    usage: format_8.py [-h] [-e | -d] [-i [INFILE]] [-o [OUTFILE]]
 """
 
 
