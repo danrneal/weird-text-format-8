@@ -48,7 +48,15 @@ def bin_to_str(binary):
     Returns:
         string: A str consisting of 4 characters or less
     """
-    return binary
+
+    string = ''
+
+    while len(binary) > 0:
+        string += chr(int(binary.pop(), 2))
+
+    string = string.strip('\x00')
+
+    return string
 
 
 def scramble_bin(binary):
