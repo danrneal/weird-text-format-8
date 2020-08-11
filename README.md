@@ -1,5 +1,7 @@
 # Weird Text Format-8
 
+This command line program encodes and decodes strings in Weird Text Format-8. Weird Text Format-8 is a made-up format that encodes bundles of 4 characters by scrambling them into 32-bit integer values for transmission, then reverses the operation on the receive end to reconstitute the original text.
+
 ## Usage
 
 ```bash
