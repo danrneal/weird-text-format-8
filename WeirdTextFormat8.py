@@ -1,8 +1,8 @@
-"""Encode and decode strings in Weird Text Format-8
+"""Encode and decode strings in Weird Text Format-8.
 
 Part of the Art+Logic Programming Challenge
 
-   usage: WeirdTextFormat8.py [-h] [-e | -d] [-i [INFILE]] [-o [OUTFILE]]
+Usage: WeirdTextFormat8.py [-h] [-e | -d] [-i [INFILE]] [-o [OUTFILE]]
 """
 import argparse
 import json
@@ -10,7 +10,7 @@ import sys
 
 
 def main():
-   """Main function call, runs encode script"""
+   """Main function call, runs encode script."""
    parser = argparse.ArgumentParser()
    group = parser.add_mutually_exclusive_group()
    group.add_argument(
@@ -41,7 +41,7 @@ def main():
       nargs='?',
       type=argparse.FileType('w'),
       default=sys.stdout,
-      help='Specity a file to write output to (default: stdout)'
+      help='Specify a file to write output to (default: stdout)'
    )
    args = parser.parse_args()
 
@@ -80,7 +80,7 @@ def main():
 
 
 def strToBin(string):
-   """Converts a 4 character string to binary
+   """Converts a 4 character string to binary.
 
    Args:
       string: A str consisting of 4 characters or less
@@ -88,7 +88,6 @@ def strToBin(string):
    Returns:
       binary: A list of 4 elements representing each character in binary format
    """
-
    binary = ['00000000', '00000000', '00000000', '00000000']
 
    n = -1
@@ -102,7 +101,7 @@ def strToBin(string):
 
 
 def binToStr(binary):
-   """Converts a 4 element list of binary to a 4 character string
+   """Converts a 4 element list of binary to a 4 character string.
 
    Args:
       binary: A list of 4 elements representing each character in binary format
@@ -110,7 +109,6 @@ def binToStr(binary):
    Returns:
       string: A str consisting of 4 characters or less
    """
-
    string = ''
 
    while 0 < len(binary):
@@ -122,7 +120,7 @@ def binToStr(binary):
 
 
 def scrambleBin(binary):
-   """Scrambles a 4 element list representing the binary of 4 character
+   """Scrambles a 4 element list representing the binary of 4 character.
 
    Args:
       binary: A list containing 4 elements that are the binary representation
@@ -132,7 +130,6 @@ def scrambleBin(binary):
       scrambled: A list containing 4 elements which are the result of
          scrambling the input
    """
-
    scrambled = ['', '', '', '']
 
    n = 0
@@ -148,7 +145,7 @@ def scrambleBin(binary):
 
 
 def unscrambleBin(binary):
-   """Unscrambles a 4 element list representing the binary of 4 characters
+   """Unscrambles a 4 element list representing the binary of 4 characters.
 
    Args:
       binary: A list containing 4 elements which are the scrambled
@@ -158,7 +155,6 @@ def unscrambleBin(binary):
       unscrambled: A list containing 4 elements that are the binary
          representation of characters
    """
-
    unscrambled = ['', '', '', '']
 
    n = 0
@@ -171,7 +167,7 @@ def unscrambleBin(binary):
 
 
 def binToDec(binary):
-   """Converts an array of 4 binary numbers into a single decimal number
+   """Converts an array of 4 binary numbers into a single decimal number.
 
    Args:
       binary: A list containing 4 binary numbers
@@ -185,7 +181,7 @@ def binToDec(binary):
 
 
 def decToBin(decimal):
-   """Converts a single decimal number into an array of 4 binary numbers
+   """Converts a single decimal number into an array of 4 binary numbers.
 
    Args:
       decimal: An int representation of 4 binary numbers
@@ -193,7 +189,6 @@ def decToBin(decimal):
    Returns:
       binary: A list containing the 4 binary numbers
    """
-
    binary = ['00000000', '00000000', '00000000', '00000000']
    allBits = bin(decimal)[2:]
 
@@ -210,7 +205,7 @@ def decToBin(decimal):
 
 
 def encode(string):
-   """Encodes bundles of 4 characters using a weird text format
+   """Encodes bundles of 4 characters using a weird text format.
 
    Args:
       string: The string to be encoded
@@ -218,7 +213,6 @@ def encode(string):
    Returns:
       encoded: An list of ints representing the encoded string
    """
-
    encoded = []
 
    for i in range(0, len(string), 4):
@@ -231,7 +225,7 @@ def encode(string):
 
 
 def decode(decimals):
-   """Decodes decimals representing bundles of 4 chars in a weird text format
+   """Decodes decimals representing bundles of 4 chars in a weird text format.
 
    Args:
       decimals: A list of decimals representing bundles of 4 characters
@@ -239,7 +233,6 @@ def decode(decimals):
    Returns:
       decoded: A str represending the decoded string
    """
-
    decoded = ''
 
    for decimal in decimals:
